@@ -1,0 +1,48 @@
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence
+http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+	version="2.0">
+	
+    
+	<persistence-unit name="contas-postgres">
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+		<properties>
+			<property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
+			<property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost/Cadastro3" />
+			<property name="javax.persistence.jdbc.user" value="postgres" />
+			<property name="javax.persistence.jdbc.password" value="no1066" />
+
+			<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" />
+			<property name="hibernate.hbm2ddl.auto" value="update" />
+			<property name="hibernate.show_sql" value="true" />
+			<property name="hibernate.format_sql" value="true" />
+			
+			<!-- Ligando cache nivel 2 -->
+			<property name="hibernate.cache.use_second_level_cache"  value="true"/>
+			<property name="hibernate.cache.use_query_cache"  value="true"/>
+			<property name="hibernate.cache.region.factory_class"  value="org.hibernate.cache.ehcache.EhCacheRegionFactory"/>
+			
+		</properties>						
+		
+	</persistence-unit>
+
+	
+	
+	<persistence-unit name="contasmysql" transaction-type="RESOURCE_LOCAL">
+		<properties>
+			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
+			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/contas" />
+			<property name="javax.persistence.jdbc.user" value="root" />
+			<property name="javax.persistence.jdbc.password" value="" />
+	
+			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
+	
+			<property name="hibernate.show_sql" value="true" />
+			<property name="hibernate.connection.shutdown" value="true" />
+			<property name="hibernate.hbm2ddl.auto" value="update" />		
+		</properties>
+	</persistence-unit>
+	
+	
+</persistence>
